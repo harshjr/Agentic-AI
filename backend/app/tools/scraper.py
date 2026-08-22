@@ -1,10 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
+from pydantic import BaseModel, Field
 from langchain.tools import tool
 
-@tool
-def scrape_url(url: str) -> str:
-    """Scrape and return clean text content from a given URL for deeper reading."""
+class ScrapeUrlInput(BaseModel):
+    url: str = Field(..., description="The HTTP or HTTPS URL of the website to scrape.")
+
+def execute_scrape_url(url: str, max_chars: int = 3000) -> str:
+    """Scrape clean textual content from any target webpage."""
+    if not url or not url.startswith("http"):
+        return "Invalid or empty URL provided for scraping."
     try:
         resp = requests.get(
             url,
@@ -18,6 +23,11 @@ def scrape_url(url: str) -> str:
         for tag in soup(["script", "style", "nav", "footer", "header", "noscript", "aside"]):
             tag.decompose()
         clean_text = soup.get_text(separator=" ", strip=True)
-        return clean_text[:3000] if clean_text else "No extractable text found on page."
+        return clean_text[:max_chars] if clean_text else "No extractable text found on page."
     except Exception as e:
         return f"Could not scrape URL {url}: {str(e)}"
+
+@tool(args_schema=ScrapeUrlInput)
+def scrape_url(url: str) -> str:
+    """Scrape and return clean text content from a given URL for deeper reading."""
+    return execute_scrape_url(url=url)

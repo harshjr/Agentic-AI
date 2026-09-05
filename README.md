@@ -231,7 +231,7 @@ LangGraphC/
 
 ---
 
-## 🚢 Deployment Guide
+<! -- ## 🚢 Deployment Guide
 
 ### Deploy Backend on Render
 
@@ -260,7 +260,7 @@ LangGraphC/
    - **Root Directory**: `frontend`
 4. Add the **Environment Variable**:
    - `NEXT_PUBLIC_API_BASE_URL`: `https://your-render-backend-url.onrender.com`
-5. Click **Deploy**. Vercel will build and serve the application with worldwide CDN distribution.
+5. Click **Deploy**. Vercel will build and serve the application with worldwide CDN distribution. -->
 
 ---
 

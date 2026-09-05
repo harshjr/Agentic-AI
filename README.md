@@ -231,38 +231,6 @@ LangGraphC/
 
 ---
 
-<! -- ## 🚢 Deployment Guide
-
-### Deploy Backend on Render
-
-1. Create a free account at [Render.com](https://render.com/).
-2. Push your repository to GitHub.
-3. In Render Dashboard, click **New +** $\to$ **Blueprint** (or **Web Service**).
-4. Connect your GitHub repository. Render will automatically detect `backend/render.yaml` or you can manually configure:
-   - **Root Directory**: `backend`
-   - **Build Command**: `pip install -r requirements.txt`
-   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-   - **Health Check Path**: `/health`
-5. Add the following **Environment Variables** in the Render dashboard:
-   - `GROQ_API_KEY`: Your Groq API key
-   - `TAVILY_API_KEY`: Your Tavily API key
-   - `GROQ_MODEL`: `openai/gpt-oss-120b` (or `llama-3.1-8b-instant`)
-6. Deploy! Render will provide your public backend URL (e.g., `https://langchain-research-backend.onrender.com`).
-
----
-
-### Deploy Frontend on Vercel
-
-1. Create an account at [Vercel.com](https://vercel.com/).
-2. Click **Add New...** $\to$ **Project** and import your GitHub repository.
-3. Configure the project settings:
-   - **Framework Preset**: Next.js
-   - **Root Directory**: `frontend`
-4. Add the **Environment Variable**:
-   - `NEXT_PUBLIC_API_BASE_URL`: `https://your-render-backend-url.onrender.com`
-5. Click **Deploy**. Vercel will build and serve the application with worldwide CDN distribution. -->
-
----
 
 ## 🔮 Future Improvements
 
